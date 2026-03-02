@@ -351,11 +351,39 @@ node tools/clis/google-ads.js reports get --type ad_performance --date-range las
 # 5. Upload to platform
 ```
 
+### Ads Audit & Health Score (claude-ads)
+
+Use **[claude-ads](https://github.com/AgriciDaniel/claude-ads)** to audit account health before iterating creative. Runs 190 checks across 6 platforms, produces an Ads Health Score (0–100) with letter grade, and generates a prioritized action plan.
+
+**Install:**
+```bash
+curl -fsSL https://raw.githubusercontent.com/AgriciDaniel/claude-ads/main/install.sh | bash
+```
+
+| Command | What it audits |
+|---------|----------------|
+| `/ads audit` | Full cross-platform audit — all 190 checks, overall health score |
+| `/ads google` | Google Ads deep dive — 74 checks (bidding, keywords, quality score, assets) |
+| `/ads meta` | Meta Ads deep dive — 46 checks (creative fatigue, audience overlap, ROAS) |
+| `/ads plan saas` | SaaS-specific strategic plan with platform recommendations |
+| `/ads plan ecommerce` | E-commerce strategic plan |
+
+**Recommended workflow with ad-creative:**
+1. Run `/ads audit` → identify underperforming creative and account-level issues
+2. Use this skill (`/ad-creative`) to generate new variations targeting flagged weaknesses
+3. Upload new creative → run `/ads audit` again after 2 weeks to measure improvement
+
+**Quality guardrails enforced by claude-ads:**
+- Never recommends Broad Match without Smart Bidding active
+- "3x Kill Rule" — pause assets at 3× target CPA with zero conversions
+- Industry-specific benchmarks (SaaS, e-commerce, local service, B2B, and more)
+
 ---
 
 ## Related Skills
 
 - **paid-ads**: For campaign strategy, targeting, budgets, and optimization
+- **ads-audit ([claude-ads](https://github.com/AgriciDaniel/claude-ads))**: For account health scoring and 190-check audit — run before iterating creative to identify root causes
 - **copywriting**: For landing page copy (where ad traffic lands)
 - **ab-test-setup**: For structuring creative tests with statistical rigor
 - **marketing-psychology**: For psychological principles behind high-performing creative

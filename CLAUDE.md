@@ -82,6 +82,10 @@ subagent_type options:
 |-------|---------|
 | `/paid-ads` | Google, Meta, LinkedIn campaign strategy |
 | `/ad-creative` | Generate ad copy variations at scale |
+| `/ads audit` | 190-check cross-platform ads health score + action plan (via [AgriciDaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads)) |
+| `/ads google` | Google Ads deep dive — 74 checks, scoring, prioritized fixes |
+| `/ads meta` | Meta Ads deep dive — 46 checks, scoring, prioritized fixes |
+| `/ads plan saas` | SaaS-specific paid ads strategic plan |
 
 **Measurement & Testing**
 
